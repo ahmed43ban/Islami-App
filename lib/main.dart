@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/style/colorsmanger.dart';
 import 'package:islami/ui/home/screen/home_screen.dart';
 import 'package:islami/ui/splash/screen/splash_screen.dart';
+import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // This widgets is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName:(_)=>SplashScreen(),
         HomeScreen.routeName:(_)=>HomeScreen(),
+        SuradetailsScreen.routName:(_)=>SuradetailsScreen(),
       },
       initialRoute: SplashScreen.routeName,
     );
