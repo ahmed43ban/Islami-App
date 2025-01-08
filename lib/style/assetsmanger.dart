@@ -1,5 +1,5 @@
 abstract final class AssetsManger{
-  static const String splash = "assets/images/Splash.png";
+  static const String splash = "assets/images/Splash Screen.png";
   static const String ahadeth = "assets/images/ahadeth.svg";
   static const String ahasethback = "assets/images/ahadeth_Background.png";
   static const String leftcorner = "assets/images/left_corner.png";
