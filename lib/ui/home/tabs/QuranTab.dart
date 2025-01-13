@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/Constant.dart';
 import 'package:islami/style/StringsManger.dart';
 import 'package:islami/style/assetsmanger.dart';
@@ -8,8 +9,16 @@ import 'package:islami/ui/home/widgets/SuraWidget.dart';
 
 import '../../../style/colorsmanger.dart';
 
-class Qurantab extends StatelessWidget {
-  const Qurantab({super.key});
+class Qurantab extends StatefulWidget {
+  @override
+  State<Qurantab> createState() => _QurantabState();
+}
+
+class _QurantabState extends State<Qurantab> {
+ List<SuraModel>searchList=[];
+ List<SuraModel>mostResentList=[];
+
+ String searchValue='';
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +39,12 @@ class Qurantab extends StatelessWidget {
                 Align(alignment: Alignment.center,
                     child: Image.asset(AssetsManger.logo,scale: 1.25,)),
                 TextField(
+                  onChanged: (value){
+                   setState(() {
+                     searchValue = value;
+                     searchSura(value);
+                   });
+                  },
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
@@ -64,44 +79,80 @@ class Qurantab extends StatelessWidget {
                   ),
 
                 ),
-                SizedBox(height: 15,),
-                Text(StringsManger.mostRecently,style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  fontFamily: "janna",
-                  color: ColorManger.searchText
-                ),),
-                SizedBox(height: 10,),
-                Expanded(
-                  flex: 1,
-                  child: ListView.separated(scrollDirection: Axis.horizontal,
-                      itemBuilder: (context,index)=>Resntlysurawidget(),
-                      separatorBuilder: (context,index)=>SizedBox(width: 10,),
-                      itemCount: 10),
-                ),
-                SizedBox(height: 10,),
-                Text(StringsManger.surasList,style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "janna",
-                    color: ColorManger.searchText
-                )),
-                SizedBox(height: 10,),
+                if (searchValue.isEmpty)
+                ...[
+                  SizedBox(height: 15,),
+                  Text(StringsManger.mostRecently,style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      fontFamily: "janna",
+                      color: ColorManger.searchText
+                  ),),
+                  SizedBox(height: 10,),
+                  Expanded(
+                    flex: 1,
+                    child: ListView.separated(scrollDirection: Axis.horizontal,
+                        itemBuilder: (context,index)=>Resntlysurawidget(
+                          recentSura: mostResentList[index],
+                        ),
+                        separatorBuilder: (context,index)=>SizedBox(width: 10,),
+                        itemCount: mostResentList.length),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(StringsManger.surasList,style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      fontFamily: "janna",
+                      color: ColorManger.searchText
+                  )),
+                  SizedBox(height: 10,),
+                ],
+                if (searchValue.isNotEmpty)
+                 Text("Number of results : ${searchList.length}",style: TextStyle(
+                     fontWeight: FontWeight.w700,
+                     fontSize: 25,
+                     fontFamily: "janna",
+                     color: ColorManger.searchText
+                 )) ,
                 Expanded(flex: 2,
                   child: ListView.separated(
-                      itemBuilder:(context,index)=>Surawidget(sura: SuraList[index],) ,
+                      itemBuilder:(context,index)=>Surawidget(
+                        addToRecent: (){
+                          mostResentList.insert(0,searchValue.isNotEmpty
+                              ?searchList[index]
+                              :SuraList[index]);
+                          setState(() {
+
+                          });
+                        },
+                        sura: searchValue.isNotEmpty
+                          ?searchList[index]
+                          :SuraList[index],) ,
                       separatorBuilder: (context,index)=>Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: Divider(height: 16,),
                       ),
-                      itemCount: SuraList.length),
+                      itemCount: searchValue.isNotEmpty
+                      ?searchList.length
+                      :SuraList.length),
                 )
-                
+
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  searchSura(String searchText){
+    searchList=[];
+    /*for (int i =0;i<SuraList.length;i++){
+      if(SuraList[i].suraNameAr.contains(searchText)||SuraList[i].suraNameEn.toLowerCase().contains(searchText.toLowerCase()) ){
+        searchList.add(SuraList[i]);
+      }
+    }*/
+    searchList=SuraList.where((element)=>element.suraNameAr.contains(searchText)
+        ||element.suraNameEn.toLowerCase().contains(searchText.toLowerCase())).toList();
   }
 }
