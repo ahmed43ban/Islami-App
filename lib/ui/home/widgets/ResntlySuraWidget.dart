@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
 
 class Resntlysurawidget extends StatelessWidget {
-  const Resntlysurawidget({super.key});
+  SuraModel recentSura;
+   Resntlysurawidget({required this.recentSura});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +21,19 @@ class Resntlysurawidget extends StatelessWidget {
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("Al-Anbiya",style: TextStyle(
+                Text(recentSura.suraNameEn,style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 24,
                   fontFamily: "janna",
                   color: ColorManger.secondary
                 ),),
-                Text("الأنبياء",style: TextStyle(
+                Text(recentSura.suraNameAr,style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 24,
                   fontFamily: "janna",
                   color: ColorManger.secondary
                 ),),
-                Text("112 Verses",style: TextStyle(
+                Text("${recentSura.versesNumber} Verses",style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                   fontFamily: "janna",

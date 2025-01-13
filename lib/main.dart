@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islami/style/colorsmanger.dart';
+import 'package:islami/style/prefsHelper.dart';
 import 'package:islami/ui/home/screen/home_screen.dart';
 import 'package:islami/ui/splash/screen/splash_screen.dart';
 import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  await PerfHelper.init();
   runApp(const MyApp());
 }
 
