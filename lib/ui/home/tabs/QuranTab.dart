@@ -15,42 +15,47 @@ class Qurantab extends StatefulWidget {
 }
 
 class _QurantabState extends State<Qurantab> {
- List<SuraModel>searchList=[];
- List<SuraModel>mostResentList=[];
+  List<SuraModel> searchList = [];
+  List<SuraModel> mostResentList = [];
 
- String searchValue='';
+  String searchValue = '';
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).unfocus(); //to click on body close keyboard
       },
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AssetsManger.quranback),fit: BoxFit.fitWidth)
-        ),
+            image: DecorationImage(
+                image: AssetImage(AssetsManger.quranback),
+                fit: BoxFit.fitWidth)),
         child: SafeArea(
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 20),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(alignment: Alignment.center,
-                    child: Image.asset(AssetsManger.logo,scale: 1.25,)),
+                Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      AssetsManger.logo,
+                      scale: 1.25,
+                    )),
                 TextField(
-                  onChanged: (value){
-                   setState(() {
-                     searchValue = value;
-                     searchSura(value);
-                   });
+                  onChanged: (value) {
+                    setState(() {
+                      searchValue = value;
+                      searchSura(value);
+                    });
                   },
                   style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: 'janna',
-                    color: ColorManger.searchText
-                  ),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      fontFamily: 'janna',
+                      color: ColorManger.searchText),
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
                     isCollapsed: true,
@@ -61,82 +66,98 @@ class _QurantabState extends State<Qurantab> {
                         fontWeight: FontWeight.w700,
                         fontSize: 16,
                         fontFamily: 'janna',
-                        color: ColorManger.searchText
-                    ),
-                    prefixIconConstraints:BoxConstraints(maxWidth: 56,maxHeight: 56),
+                        color: ColorManger.searchText),
+                    prefixIconConstraints:
+                    BoxConstraints(maxWidth: 56, maxHeight: 56),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(14),
                       child: SvgPicture.asset(AssetsManger.quran),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: ColorManger.primary,)
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: ColorManger.primary,
+                        )),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: ColorManger.primary,)
-                    ),
+                        borderSide: BorderSide(
+                          color: ColorManger.primary,
+                        )),
                   ),
-
                 ),
-                if (searchValue.isEmpty)
-                ...[
-                  SizedBox(height: 15,),
-                  Text(StringsManger.mostRecently,style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      fontFamily: "janna",
-                      color: ColorManger.searchText
-                  ),),
-                  SizedBox(height: 10,),
+                if (searchValue.isEmpty) ...[
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    StringsManger.mostRecently,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        fontFamily: "janna",
+                        color: ColorManger.searchText),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Expanded(
                     flex: 1,
-                    child: ListView.separated(scrollDirection: Axis.horizontal,
-                        itemBuilder: (context,index)=>Resntlysurawidget(
+                    child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Resntlysurawidget(
                           recentSura: mostResentList[index],
                         ),
-                        separatorBuilder: (context,index)=>SizedBox(width: 10,),
+                        separatorBuilder: (context, index) => SizedBox(
+                          width: 10,
+                        ),
                         itemCount: mostResentList.length),
                   ),
-                  SizedBox(height: 10,),
-                  Text(StringsManger.surasList,style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      fontFamily: "janna",
-                      color: ColorManger.searchText
-                  )),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(StringsManger.surasList,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          fontFamily: "janna",
+                          color: ColorManger.searchText)),
+                  SizedBox(
+                    height: 10,
+                  ),
                 ],
                 if (searchValue.isNotEmpty)
-                 Text("Number of results : ${searchList.length}",style: TextStyle(
-                     fontWeight: FontWeight.w700,
-                     fontSize: 25,
-                     fontFamily: "janna",
-                     color: ColorManger.searchText
-                 )) ,
-                Expanded(flex: 2,
+                  Text("Number of results : ${searchList.length}",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 25,
+                          fontFamily: "janna",
+                          color: ColorManger.searchText)),
+                Expanded(
+                  flex: 2,
                   child: ListView.separated(
-                      itemBuilder:(context,index)=>Surawidget(
-                        addToRecent: (){
-                          mostResentList.insert(0,searchValue.isNotEmpty
-                              ?searchList[index]
-                              :SuraList[index]);
-                          setState(() {
-
-                          });
+                      itemBuilder: (context, index) => Surawidget(
+                        addToRecent: () {
+                          mostResentList.insert(
+                              0,
+                              searchValue.isNotEmpty
+                                  ? searchList[index]
+                                  : SuraList[index]);
+                          setState(() {});
                         },
                         sura: searchValue.isNotEmpty
-                          ?searchList[index]
-                          :SuraList[index],) ,
-                      separatorBuilder: (context,index)=>Padding(
+                            ? searchList[index]
+                            : SuraList[index],
+                      ),
+                      separatorBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: Divider(height: 16,),
+                        child: Divider(
+                          height: 16,
+                        ),
                       ),
                       itemCount: searchValue.isNotEmpty
-                      ?searchList.length
-                      :SuraList.length),
+                          ? searchList.length
+                          : SuraList.length),
                 )
-
               ],
             ),
           ),
@@ -145,14 +166,16 @@ class _QurantabState extends State<Qurantab> {
     );
   }
 
-  searchSura(String searchText){
-    searchList=[];
+  void searchSura(String searchText) {
+    searchList = [];
     /*for (int i =0;i<SuraList.length;i++){
       if(SuraList[i].suraNameAr.contains(searchText)||SuraList[i].suraNameEn.toLowerCase().contains(searchText.toLowerCase()) ){
         searchList.add(SuraList[i]);
       }
     }*/
-    searchList=SuraList.where((element)=>element.suraNameAr.contains(searchText)
-        ||element.suraNameEn.toLowerCase().contains(searchText.toLowerCase())).toList();
+    searchList = SuraList.where((element) =>
+    element.suraNameAr.contains(searchText) ||
+        element.suraNameEn.toLowerCase().contains(searchText.toLowerCase()))
+        .toList();
   }
 }
