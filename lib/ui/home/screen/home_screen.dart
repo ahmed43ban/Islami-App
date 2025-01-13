@@ -10,15 +10,15 @@ import 'package:islami/ui/home/tabs/TimeTab.dart';
 import '../../../style/assetsmanger.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName="home";
+  static const String routeName = "home";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selctedindex =0;
-  List<Widget>tabs=[
+  int selctedindex = 0;
+  List<Widget> tabs = [
     Qurantab(),
     Hadithtab(),
     Sebhatab(),
@@ -30,69 +30,77 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: NavigationBar(height: 60,
-        onDestinationSelected: (index){
-         setState(() {
-           selctedindex=index;
-         });
-        },
+      bottomNavigationBar: NavigationBar(
+          height: 60,
+          onDestinationSelected: (index) {
+            setState(() {
+              selctedindex = index;
+            });
+          },
           selectedIndex: selctedindex,
           backgroundColor: ColorManger.primary,
           indicatorColor: ColorManger.Naveitemback,
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           destinations: [
             NavigationDestination(
-                icon:SvgPicture.asset(AssetsManger.quran,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.secondary,
-                      BlendMode.srcIn),),
-                selectedIcon: SvgPicture.asset(AssetsManger.quran,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.teritary,
-                      BlendMode.srcIn),
+                icon: SvgPicture.asset(
+                  AssetsManger.quran,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.secondary, BlendMode.srcIn),
+                ),
+                selectedIcon: SvgPicture.asset(
+                  AssetsManger.quran,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
                 label: StringsManger.quran),
             NavigationDestination(
-                icon:SvgPicture.asset(AssetsManger.ahadeth,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.secondary,
-                      BlendMode.srcIn),),
-                selectedIcon: SvgPicture.asset(AssetsManger.ahadeth,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.teritary,
-                      BlendMode.srcIn),
+                icon: SvgPicture.asset(
+                  AssetsManger.ahadeth,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.secondary, BlendMode.srcIn),
+                ),
+                selectedIcon: SvgPicture.asset(
+                  AssetsManger.ahadeth,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
                 label: StringsManger.hadith),
             NavigationDestination(
-                icon:SvgPicture.asset(AssetsManger.sebha,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.secondary,
-                      BlendMode.srcIn),),
-                selectedIcon: SvgPicture.asset(AssetsManger.sebha,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.teritary,
-                      BlendMode.srcIn),
+                icon: SvgPicture.asset(
+                  AssetsManger.sebha,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.secondary, BlendMode.srcIn),
+                ),
+                selectedIcon: SvgPicture.asset(
+                  AssetsManger.sebha,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
                 label: StringsManger.sebha),
             NavigationDestination(
-                icon:SvgPicture.asset(AssetsManger.radio,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.secondary,
-                      BlendMode.srcIn),),
-                selectedIcon: SvgPicture.asset(AssetsManger.radio,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.teritary,
-                      BlendMode.srcIn),),
+                icon: SvgPicture.asset(
+                  AssetsManger.radio,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.secondary, BlendMode.srcIn),
+                ),
+                selectedIcon: SvgPicture.asset(
+                  AssetsManger.radio,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
+                ),
                 label: StringsManger.radio),
             NavigationDestination(
-                icon:SvgPicture.asset(AssetsManger.time,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.secondary,
-                      BlendMode.srcIn),),
-                selectedIcon: SvgPicture.asset(AssetsManger.time,
-                  colorFilter: ColorFilter.mode(
-                      ColorManger.teritary,
-                      BlendMode.srcIn),),
+                icon: SvgPicture.asset(
+                  AssetsManger.time,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.secondary, BlendMode.srcIn),
+                ),
+                selectedIcon: SvgPicture.asset(
+                  AssetsManger.time,
+                  colorFilter:
+                  ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
+                ),
                 label: StringsManger.time),
           ]),
       body: tabs[selctedindex],
