@@ -6,12 +6,14 @@ import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
 
 class Surawidget extends StatelessWidget {
   SuraModel sura;
-   Surawidget({required this.sura});
+  final void Function() addToRecent;
+  Surawidget({required this.sura,required this.addToRecent});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        addToRecent();
         Navigator.pushNamed(context,SuradetailsScreen.routName,arguments: sura);
       },
       child: Row(
