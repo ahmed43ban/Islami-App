@@ -6,7 +6,7 @@ import '../../../style/assetsmanger.dart';
 import '../../home/screen/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const String routeName= "splash";
+  static const String routeName = "splash";
   const SplashScreen({super.key});
 
   @override
@@ -18,18 +18,19 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(
-        seconds: 2
-    ), (){
+    Timer(Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset(AssetsManger.splash,
-      width: double.infinity,
-      fit: BoxFit.fill,),
+      body: Image.asset(
+        AssetsManger.splash,
+        width: double.infinity,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
