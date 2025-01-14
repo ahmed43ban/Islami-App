@@ -36,7 +36,6 @@ class _SebhatabState extends State<Sebhatab> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     AssetsManger.logo,
-                    scale: 1.25,
                   )),
               SizedBox(
                 height: 16,
