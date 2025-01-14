@@ -17,6 +17,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int index=0;
+  int curnnetphoto=0;
 
   List<Widget>intros =[
     IntroFirst(),
@@ -51,26 +52,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    if(index>0)
                     GestureDetector(
                       onTap: (){
                         setState(() {
+                          if(index>0)
                           index = index-1;
+                          curnnetphoto = index;
                         });
                       },
-                      child: Text("Back",style: TextStyle(
+                      child: index>0?Text("Back",style: TextStyle(
                         color: ColorManger.primary,
                           fontFamily: "janna",
                           fontSize: 16,
                           fontWeight: FontWeight.w700
-                      ),),
+                      ),)
+                          :SizedBox(width: 30,),
                     ),
-                    Expanded(child: Icon(Icons.skip_next_outlined)),
+                    Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(5, (index){
+                        return  AnimatedContainer(duration: Duration(milliseconds: 20),
+                          height: 5,
+                          width: curnnetphoto==index?18:7,
+                          decoration: BoxDecoration(
+                              color: curnnetphoto==index?ColorManger.dotPrimary:ColorManger.dotSecondary,
+                              borderRadius: BorderRadius.circular(5)
+                          ),);
+                      }),
+                    ),),
                     GestureDetector(
                       onTap: (){
                         setState(() {
                           index<4 ? index= index+1
                               :Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                          curnnetphoto = index;
 
                         });
                       },
