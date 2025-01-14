@@ -42,10 +42,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     AssetsManger.logo,
                   )),
               Expanded(
-                child: Column(
-                  children:[
-                    intros[index]
-                  ]
+                child: GestureDetector(
+                  onHorizontalDragEnd:onSwipe ,
+                  child: Column(
+                    children:[
+                      intros[index]
+                    ]
+                  ),
                 ),
               ),
               Padding(
@@ -109,4 +112,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
-}
+  void onSwipe(DragEndDetails details){
+    if (details.primaryVelocity! < 0) {
+      if (index < 4) {
+        setState(() {
+          index++;
+          curnnetphoto = index;
+        });
+      }else if (index == 4){
+        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      }
+    } else if (details.primaryVelocity! > 0) {
+      if (index > 0) {
+        setState(() {
+          index--;
+          curnnetphoto = index;
+        });
+      }
+    }
+  }
+
+    }
