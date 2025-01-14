@@ -52,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(bottom: 5),
                 child: Row(
                   children: [
                     GestureDetector(
@@ -63,13 +63,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           curnnetphoto = index;
                         });
                       },
-                      child: index>0?Text("Back",style: TextStyle(
-                        color: ColorManger.primary,
-                          fontFamily: "janna",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700
-                      ),)
-                          :SizedBox(width: 30,),
+                      child: Container(
+                        color: Colors.transparent,
+                        margin: EdgeInsets.all(5),
+                        child: index>0?Text("Back",style: TextStyle(
+                            color: ColorManger.primary,
+                            fontFamily: "janna",
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700
+                        ),)
+                            :SizedBox(width: 30,),
+                      )
                     ),
                     Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(5, (index){
@@ -91,17 +95,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                         });
                       },
-                      child: index <4 ?Text("Next",style: TextStyle(
-                          color: ColorManger.primary,
-                          fontFamily: "janna",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700
-                      ),):Text("Finish",style: TextStyle(
-                          color: ColorManger.primary,
-                          fontFamily: "janna",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700
-                      ),)
+                      child: Container(
+                        color: Colors.transparent,
+                        margin: EdgeInsets.all(5),
+                        child: index <4 ?Text("Next",style: TextStyle(
+                            color: ColorManger.primary,
+                            fontFamily: "janna",
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700
+                        ),):Text("Finish",style: TextStyle(
+                            color: ColorManger.primary,
+                            fontFamily: "janna",
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700
+                        ),),
+                      )
                     )
                   ],
                 ),
