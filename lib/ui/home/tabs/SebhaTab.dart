@@ -22,6 +22,7 @@ class _SebhatabState extends State<Sebhatab> {
   ];
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -36,7 +37,6 @@ class _SebhatabState extends State<Sebhatab> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     AssetsManger.logo,
-                    scale: 1.25,
                   )),
               SizedBox(
                 height: 16,
@@ -52,47 +52,54 @@ class _SebhatabState extends State<Sebhatab> {
               SizedBox(
                 height: 16,
               ),
-              Image.asset(
-                AssetsManger.sebhahead,
-              ),
-              GestureDetector(
-                onTap: () {
-                  RotationAngel();
-                  conter(sebhaConter);
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Transform.rotate(
-                      angle: rotation,
-                      child: Image.asset(
-                        AssetsManger.SebhaBody,
-                        fit: BoxFit.fill,
+              Stack(alignment: Alignment.topCenter,
+                children: [
+                  Image.asset(
+                    AssetsManger.sebhahead,
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(top: height*.09),
+                    child: GestureDetector(
+                      onTap: () {
+                        RotationAngel();
+                        conter(sebhaConter);
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Transform.rotate(
+                            angle: rotation,
+                            child: Image.asset(
+                              AssetsManger.SebhaBody,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                currentzekr[time],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 30,
+                                    fontFamily: 'janna',
+                                    color: ColorManger.searchText),
+                              ),
+                              Text(
+                                "${sebhaConter}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 30,
+                                    fontFamily: 'janna',
+                                    color: ColorManger.searchText),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          currentzekr[time],
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 30,
-                              fontFamily: 'janna',
-                              color: ColorManger.searchText),
-                        ),
-                        Text(
-                          "${sebhaConter}",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 30,
-                              fontFamily: 'janna',
-                              color: ColorManger.searchText),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
