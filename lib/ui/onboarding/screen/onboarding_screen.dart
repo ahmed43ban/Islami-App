@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
+import 'package:islami/style/prefsHelper.dart';
 import 'package:islami/ui/home/screen/home_screen.dart';
 import 'package:islami/ui/onboarding/widgets/intro_first.dart';
 import 'package:islami/ui/onboarding/widgets/intro_fourth.dart';
@@ -128,6 +129,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           curnnetphoto = index;
         });
       }else if (index == 4){
+        PerfHelper.saveBool(true);
         Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       }
     } else if (details.primaryVelocity! > 0) {

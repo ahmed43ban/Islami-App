@@ -22,4 +22,10 @@ class PerfHelper {
   static getRecentList(){
 
   }
+  static saveBool(bool onboard){
+    prefs.setBool('done', onboard);
+  }
+  static getBool(){
+    return prefs.get("done")??false;
+  }
 }

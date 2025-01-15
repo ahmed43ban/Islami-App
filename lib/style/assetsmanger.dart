@@ -23,4 +23,5 @@ abstract final class AssetsManger{
   static const String intro3 = "assets/images/intro3.png";
   static const String intro4 = "assets/images/intro4.png";
   static const String intro5 = "assets/images/intro5.png";
+  static const String Hadithtxtback = "assets/images/Hadithtxtback.png";
 }

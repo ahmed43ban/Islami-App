@@ -86,32 +86,35 @@ class _QurantabState extends State<Qurantab> {
                   ),
                 ),
                 if (searchValue.isEmpty) ...[
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    StringsManger.mostRecently,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        fontFamily: "janna",
-                        color: ColorManger.searchText),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => Resntlysurawidget(
-                          recentSura: mostResentList[index],
-                        ),
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 10,
-                        ),
-                        itemCount: mostResentList.length),
-                  ),
+                  if(mostResentList.isNotEmpty)
+                    ...[
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        StringsManger.mostRecently,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            fontFamily: "janna",
+                            color: ColorManger.searchText),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) => Resntlysurawidget(
+                              recentSura: mostResentList[index],
+                            ),
+                            separatorBuilder: (context, index) => SizedBox(
+                              width: 10,
+                            ),
+                            itemCount: mostResentList.length),
+                      ),
+                    ],
                   SizedBox(
                     height: 10,
                   ),
