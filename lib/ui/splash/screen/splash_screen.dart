@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:islami/style/prefsHelper.dart';
 import 'package:islami/ui/onboarding/screen/onboarding_screen.dart';
 
 import '../../../style/assetsmanger.dart';
@@ -20,7 +21,10 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, OnboardingScreen.routeName);
+      bool onboarding = PerfHelper.getBool();
+      onboarding==true
+          ?Navigator.pushReplacementNamed(context, HomeScreen.routeName)
+          : Navigator.pushReplacementNamed(context, OnboardingScreen.routeName);
     });
   }
 
