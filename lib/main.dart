@@ -11,7 +11,7 @@ import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  await PerfHelper.init();
+  await PrefHelper.init();
   runApp(const MyApp());
 }
 
