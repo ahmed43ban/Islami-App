@@ -18,6 +18,13 @@ class PrefHelper {
   await prefs.setString('action', 'Start');
 // Save an list of strings to 'items' key.
   await prefs.setStringList('items', <String>['Earth', 'Moon', 'Sun']);*/
+  static savechossen(int chosenCounter){
+    prefs.setInt("chosen", chosenCounter);
+  }
+  static int getchosen(){
+    int chosenCounter = prefs.getInt("chosen")??31;
+    return chosenCounter;
+  }
   static saveCounter(int sebhaConter){
     prefs.setInt("sebhanum", sebhaConter);
   }
