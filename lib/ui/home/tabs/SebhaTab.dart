@@ -11,6 +11,7 @@ class Sebhatab extends StatefulWidget {
 }
 
 class _SebhatabState extends State<Sebhatab> {
+  int chosenCounter =31;
   int time = 0;
   int sebhaConter = 0;
   double rotation = 0.0;
@@ -26,6 +27,7 @@ class _SebhatabState extends State<Sebhatab> {
     super.initState();
     time = PrefHelper.getTimeZekr();
     sebhaConter = PrefHelper.getCounter();
+    chosenCounter=PrefHelper.getchosen();
   }
 
   @override
@@ -112,21 +114,76 @@ class _SebhatabState extends State<Sebhatab> {
                   ),
                 ],
               ),
-              Expanded(
-                child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        time = 0;
-                        sebhaConter = 0;
-                        PrefHelper.saveCounter(sebhaConter);
-                        PrefHelper.saveTimeZekr(time);
-                      });
-                    },
-                    icon: Icon(
-                      Icons.refresh_outlined,
-                      color: ColorManger.primary,
-                      size: 50,
-                    )),
+              Row(
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                    backgroundColor: chosenCounter==11?ColorManger.primary:ColorManger.secondary
+                  ),
+                      onPressed:(){
+                    setState(() {
+                      chosenCounter=11;
+                      sebhaConter=0;
+                      time=0;
+                    });
+                    PrefHelper.savechossen(chosenCounter);
+                  },
+                      child: Text("10",style:TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: chosenCounter==11?20:10,
+                          fontFamily: 'janna',
+                          color: ColorManger.searchText) ,)),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                    backgroundColor: chosenCounter==31?ColorManger.primary:ColorManger.secondary
+                  ),
+                      onPressed:(){
+                    setState(() {
+                      chosenCounter=31;
+                      sebhaConter=0;
+                      time=0;
+                    });
+                    PrefHelper.savechossen(chosenCounter);
+                  },
+                      child: Text("30",style:TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: chosenCounter==31?20:10,
+                          fontFamily: 'janna',
+                          color: ColorManger.searchText) ,)),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                    backgroundColor: chosenCounter==101?ColorManger.primary:ColorManger.secondary
+                  ),
+                      onPressed:(){
+                    setState(() {
+                      chosenCounter=101;
+                      sebhaConter=0;
+                      time=0;
+                    });
+                    PrefHelper.savechossen(chosenCounter);
+                  },
+                      child: Text("100",style:TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: chosenCounter==101?20:10,
+                          fontFamily: 'janna',
+                          color: ColorManger.searchText) ,)),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          time = 0;
+                          sebhaConter = 0;
+                          chosenCounter=31;
+                          PrefHelper.saveCounter(sebhaConter);
+                          PrefHelper.saveTimeZekr(time);
+                          PrefHelper.savechossen(chosenCounter);
+                        });
+                      },
+                      icon: Icon(
+                        Icons.refresh_outlined,
+                        color: ColorManger.primary,
+                        size: 50,
+                      )),
+                ],
               )
             ],
           ),
@@ -139,7 +196,7 @@ class _SebhatabState extends State<Sebhatab> {
     setState(() {
       num++;
       sebhaConter = num;
-      if (sebhaConter == 31) {
+      if (sebhaConter == chosenCounter) {
         time == 3 ? time = 0 : time++;
         sebhaConter = 0;
       }
