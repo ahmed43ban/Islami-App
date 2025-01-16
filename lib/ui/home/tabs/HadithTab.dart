@@ -13,8 +13,8 @@ class Hadithtab extends StatefulWidget {
 }
 
 class _HadithtabState extends State<Hadithtab> {
-  List<HadithModel>HadithList =[];
-  PageController controller =PageController(viewportFraction: 0.85);
+  List<HadithModel> HadithList = [];
+  PageController controller = PageController(viewportFraction: 0.85);
   @override
   void initState() {
     // TODO: implement initState
@@ -26,9 +26,13 @@ class _HadithtabState extends State<Hadithtab> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-       decoration: BoxDecoration(
-         image:DecorationImage(image: AssetImage(AssetsManger.ahasethback,),
-             fit: BoxFit.fitWidth),),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(
+              AssetsManger.ahasethback,
+            ),
+            fit: BoxFit.fitWidth),
+      ),
       child: Column(
         children: [
           Align(
@@ -37,37 +41,39 @@ class _HadithtabState extends State<Hadithtab> {
                 AssetsManger.logo,
                 scale: 1.25,
               )),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           Expanded(
             child: PageView.builder(
               controller: controller,
-                itemBuilder: (context, index) => HadithList.isEmpty
-                    ?Center(
-                  child: CircularProgressIndicator(color: ColorManger.secondary,),
-                )
-                    :HadithWidget(haditmodel: HadithList[index],),
-            itemCount: HadithList.length,
+              itemBuilder: (context, index) => HadithList.isEmpty
+                  ? Center(
+                child: CircularProgressIndicator(
+                  color: ColorManger.secondary,
+                ),
+              )
+                  : HadithWidget(
+                haditmodel: HadithList[index],
+              ),
+              itemCount: HadithList.length,
             ),
           )
         ],
       ),
-       );
-
-
+    );
   }
-  loadHadith()async{
-    for(int i =1;i<=50 ;i++){
-      String hadith = await rootBundle.loadString("assets/files/Hadeeth/h${i}.txt");
-      List<String>lines = hadith.split("\n");
-      String title =lines[0];
+
+  loadHadith() async {
+    for (int i = 1; i <= 50; i++) {
+      String hadith =
+      await rootBundle.loadString("assets/files/Hadeeth/h${i}.txt");
+      List<String> lines = hadith.split("\n");
+      String title = lines[0];
       lines.removeAt(0);
       String content = lines.join();
       HadithList.add(HadithModel(title: title, content: content));
     }
-    setState(() {
-
-    });
+    setState(() {});
   }
-
-  }
-
+}
