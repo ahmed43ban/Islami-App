@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/style/StringsManger.dart';
+import 'package:islami/style/prefsHelper.dart';
 
 import '../../../style/assetsmanger.dart';
 import '../../../style/colorsmanger.dart';
@@ -13,13 +14,19 @@ class _SebhatabState extends State<Sebhatab> {
   int time = 0;
   int sebhaConter = 0;
   double rotation = 0.0;
-  //String currentZekr = StringsManger.firstZekr;
   List<String> currentzekr = [
     StringsManger.firstZekr,
     StringsManger.secondtZekr,
     StringsManger.thirdZekr,
     StringsManger.FourthZekr
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    time= PrefHelper.getTimeZekr();
+    sebhaConter=PrefHelper.getCounter();
+  }
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -30,13 +37,13 @@ class _SebhatabState extends State<Sebhatab> {
               image: AssetImage(AssetsManger.sebhaback), fit: BoxFit.fitWidth)),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 20,),
           child: Column(
             children: [
               Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    AssetsManger.logo,
+                    AssetsManger.logo,scale: 1.25,
                   )),
               SizedBox(
                 height: 16,
@@ -99,6 +106,22 @@ class _SebhatabState extends State<Sebhatab> {
                     ),
                   ),
                 ],
+              ),
+              Expanded(
+                child: IconButton(onPressed:(){
+                  setState(() {
+                    time=0;
+                    sebhaConter=0;
+                    PrefHelper.saveCounter(sebhaConter);
+                    PrefHelper.saveTimeZekr(time);
+                  });
+
+                },
+                    icon: Icon(
+                  Icons.refresh_outlined,
+                  color: ColorManger.primary,
+                      size: 50,
+                    )),
               )
             ],
           ),
@@ -115,6 +138,8 @@ class _SebhatabState extends State<Sebhatab> {
         time == 3 ? time = 0 : time++;
         sebhaConter = 0;
       }
+      PrefHelper.saveCounter(sebhaConter);
+      PrefHelper.saveTimeZekr(time);
     });
   }
 
