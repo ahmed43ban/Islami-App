@@ -24,9 +24,10 @@ class _SebhatabState extends State<Sebhatab> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    time= PrefHelper.getTimeZekr();
-    sebhaConter=PrefHelper.getCounter();
+    time = PrefHelper.getTimeZekr();
+    sebhaConter = PrefHelper.getCounter();
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -37,13 +38,16 @@ class _SebhatabState extends State<Sebhatab> {
               image: AssetImage(AssetsManger.sebhaback), fit: BoxFit.fitWidth)),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20,),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
           child: Column(
             children: [
               Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    AssetsManger.logo,scale: 1.25,
+                    AssetsManger.logo,
+                    scale: 1.25,
                   )),
               SizedBox(
                 height: 16,
@@ -59,13 +63,14 @@ class _SebhatabState extends State<Sebhatab> {
               SizedBox(
                 height: 16,
               ),
-              Stack(alignment: Alignment.topCenter,
+              Stack(
+                alignment: Alignment.topCenter,
                 children: [
                   Image.asset(
                     AssetsManger.sebhahead,
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(top: height*.09),
+                    padding: EdgeInsets.only(top: height * .09),
                     child: GestureDetector(
                       onTap: () {
                         RotationAngel();
@@ -108,18 +113,18 @@ class _SebhatabState extends State<Sebhatab> {
                 ],
               ),
               Expanded(
-                child: IconButton(onPressed:(){
-                  setState(() {
-                    time=0;
-                    sebhaConter=0;
-                    PrefHelper.saveCounter(sebhaConter);
-                    PrefHelper.saveTimeZekr(time);
-                  });
-
-                },
+                child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        time = 0;
+                        sebhaConter = 0;
+                        PrefHelper.saveCounter(sebhaConter);
+                        PrefHelper.saveTimeZekr(time);
+                      });
+                    },
                     icon: Icon(
-                  Icons.refresh_outlined,
-                  color: ColorManger.primary,
+                      Icons.refresh_outlined,
+                      color: ColorManger.primary,
                       size: 50,
                     )),
               )

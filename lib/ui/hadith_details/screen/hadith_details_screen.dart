@@ -15,22 +15,23 @@ class HadithDetailsScreen extends StatefulWidget {
 class _SuradetailsScreenState extends State<HadithDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    HadithModel hadith = ModalRoute.of(context)!.settings.arguments as HadithModel;
+    HadithModel hadith =
+    ModalRoute.of(context)!.settings.arguments as HadithModel;
     return Scaffold(
       backgroundColor: ColorManger.secondary,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(
-            color: ColorManger.primary
-        ),
+        iconTheme: IconThemeData(color: ColorManger.primary),
         centerTitle: true,
-        title: Text(hadith.title,style: TextStyle(
-            color: ColorManger.primary,
-            fontFamily: "janna",
-            fontSize: 24,
-            fontWeight: FontWeight.w700
-        ),),
+        title: Text(
+          hadith.title,
+          style: TextStyle(
+              color: ColorManger.primary,
+              fontFamily: "janna",
+              fontSize: 24,
+              fontWeight: FontWeight.w700),
+        ),
       ),
       body: Column(
         children: [
@@ -43,25 +44,30 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
                     children: [
                       Image.asset(AssetsManger.leftcorner),
                       Expanded(
-                        child: Text(textAlign: TextAlign.center,
-                            hadith.title,style: TextStyle(
+                        child: Text(
+                            textAlign: TextAlign.center,
+                            hadith.title,
+                            style: TextStyle(
                                 color: ColorManger.primary,
                                 fontFamily: "janna",
                                 fontSize: 24,
-                                fontWeight: FontWeight.w700
-                            )),
+                                fontWeight: FontWeight.w700)),
                       ),
                       Image.asset(AssetsManger.rightcorner),
                     ],
                   ),
-                  SizedBox(height: 19,),
+                  SizedBox(
+                    height: 19,
+                  ),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Text(textDirection: TextDirection.rtl,
+                      child: Text(
+                        textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
-                        hadith.content,style: TextStyle(
+                        hadith.content,
+                        style: TextStyle(
                           fontFamily: "janna",
-                          fontWeight:FontWeight.w700 ,
+                          fontWeight: FontWeight.w700,
                           fontSize: 20,
                           color: ColorManger.primary,
                         ),
@@ -72,7 +78,7 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
               ),
             ),
           ),
-          Image.asset(AssetsManger.mosque,width: double.infinity)
+          Image.asset(AssetsManger.mosque, width: double.infinity)
         ],
       ),
     );

@@ -152,6 +152,9 @@ class _QurantabState extends State<Qurantab> {
                               mostResentList.removeAt(i);
                             }
                           }
+                          if(mostResentList.length>=10){
+                            mostResentList.removeLast();
+                          }
                           mostResentList.insert(
                               0,
                               searchValue.isNotEmpty
