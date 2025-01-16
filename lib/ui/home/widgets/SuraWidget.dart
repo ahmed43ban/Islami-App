@@ -11,7 +11,7 @@ class Surawidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         addToRecent();
         Navigator.pushNamed(context, SuradetailsScreen.routName,

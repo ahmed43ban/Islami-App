@@ -129,7 +129,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           curnnetphoto = index;
         });
       }else if (index == 4){
-        PerfHelper.saveBool(true);
+        PrefHelper.saveBool(true);
         Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       }
     } else if (details.primaryVelocity! > 0) {

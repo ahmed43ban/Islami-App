@@ -8,6 +8,7 @@ import 'package:islami/ui/home/widgets/ResntlySuraWidget.dart';
 import 'package:islami/ui/home/widgets/SuraWidget.dart';
 
 import '../../../style/colorsmanger.dart';
+import '../../../style/prefsHelper.dart';
 
 class Qurantab extends StatefulWidget {
   @override
@@ -17,9 +18,13 @@ class Qurantab extends StatefulWidget {
 class _QurantabState extends State<Qurantab> {
   List<SuraModel> searchList = [];
   List<SuraModel> mostResentList = [];
-
   String searchValue = '';
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    mostResentList= PrefHelper.getRecentList();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -140,11 +145,19 @@ class _QurantabState extends State<Qurantab> {
                   child: ListView.separated(
                       itemBuilder: (context, index) => Surawidget(
                         addToRecent: () {
+                          for(int i =0 ;i<mostResentList.length;i++){
+                            if(mostResentList[i].suraNameEn==(searchValue.isNotEmpty
+                                ? searchList[index].suraNameEn
+                                : SuraList[index].suraNameEn)){
+                              mostResentList.removeAt(i);
+                            }
+                          }
                           mostResentList.insert(
                               0,
                               searchValue.isNotEmpty
                                   ? searchList[index]
                                   : SuraList[index]);
+                          PrefHelper.addRecentList(mostResentList);
                           setState(() {});
                         },
                         sura: searchValue.isNotEmpty
