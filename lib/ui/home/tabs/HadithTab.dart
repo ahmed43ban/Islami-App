@@ -33,33 +33,35 @@ class _HadithtabState extends State<Hadithtab> {
             ),
             fit: BoxFit.fitWidth),
       ),
-      child: Column(
-        children: [
-          Align(
-              alignment: Alignment.center,
-              child: Image.asset(
-                AssetsManger.logo,
-                scale: 1.25,
-              )),
-          SizedBox(
-            height: 15,
-          ),
-          Expanded(
-            child: PageView.builder(
-              controller: controller,
-              itemBuilder: (context, index) => HadithList.isEmpty
-                  ? Center(
-                child: CircularProgressIndicator(
-                  color: ColorManger.secondary,
-                ),
-              )
-                  : HadithWidget(
-                haditmodel: HadithList[index],
-              ),
-              itemCount: HadithList.length,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  AssetsManger.logo,
+                  scale: 1.25,
+                )),
+            SizedBox(
+              height: 5,
             ),
-          )
-        ],
+            Expanded(
+              child: PageView.builder(
+                controller: controller,
+                itemBuilder: (context, index) => HadithList.isEmpty
+                    ? Center(
+                  child: CircularProgressIndicator(
+                    color: ColorManger.secondary,
+                  ),
+                )
+                    : HadithWidget(
+                  haditmodel: HadithList[index],
+                ),
+                itemCount: HadithList.length,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
