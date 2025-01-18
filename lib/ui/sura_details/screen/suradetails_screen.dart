@@ -92,7 +92,7 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
     String temp ="";
     for(int i=0; i<lines.length;i++){
       temp+= lines[i].trim();
-      temp+="${i+1}";
+      temp+="(${i+1})";
     }
     suraText = temp;
     setState(() {
