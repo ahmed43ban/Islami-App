@@ -54,136 +54,144 @@ class _SebhatabState extends State<Sebhatab> {
               SizedBox(
                 height: 16,
               ),
-              Text(
-                StringsManger.mainzekr,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 30,
-                    fontFamily: 'janna',
-                    color: ColorManger.searchText),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Image.asset(
-                    AssetsManger.sebhahead,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: height * .09),
-                    child: GestureDetector(
-                      onTap: () {
-                        RotationAngel();
-                        conter(sebhaConter);
-                      },
-                      child: Stack(
-                        alignment: Alignment.center,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        StringsManger.mainzekr,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'janna',
+                            color: ColorManger.searchText),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Stack(
+                        alignment: Alignment.topCenter,
                         children: [
-                          Transform.rotate(
-                            angle: rotation,
-                            child: Image.asset(
-                              AssetsManger.SebhaBody,
-                              fit: BoxFit.fill,
+                          Image.asset(
+                            AssetsManger.sebhahead,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: height * .09),
+                            child: GestureDetector(
+                              onTap: () {
+                                RotationAngel();
+                                conter(sebhaConter);
+                              },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Transform.rotate(
+                                    angle: rotation,
+                                    child: Image.asset(
+                                      AssetsManger.SebhaBody,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        currentzekr[time],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 30,
+                                            fontFamily: 'janna',
+                                            color: ColorManger.searchText),
+                                      ),
+                                      Text(
+                                        "${sebhaConter}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 30,
+                                            fontFamily: 'janna',
+                                            color: ColorManger.searchText),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                          Column(
-                            children: [
-                              Text(
-                                currentzekr[time],
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30,
-                                    fontFamily: 'janna',
-                                    color: ColorManger.searchText),
-                              ),
-                              Text(
-                                "${sebhaConter}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30,
-                                    fontFamily: 'janna',
-                                    color: ColorManger.searchText),
-                              )
-                            ],
-                          )
                         ],
                       ),
-                    ),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: chosenCounter==11?ColorManger.primary:ColorManger.secondary
+                              ),
+                              onPressed:(){
+                                setState(() {
+                                  chosenCounter=11;
+                                  sebhaConter=0;
+                                  time=0;
+                                });
+                                PrefHelper.savechossen(chosenCounter);
+                              },
+                              child: Text("10",style:TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: chosenCounter==11?20:10,
+                                  fontFamily: 'janna',
+                                  color: ColorManger.searchText) ,)),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: chosenCounter==31?ColorManger.primary:ColorManger.secondary
+                              ),
+                              onPressed:(){
+                                setState(() {
+                                  chosenCounter=31;
+                                  sebhaConter=0;
+                                  time=0;
+                                });
+                                PrefHelper.savechossen(chosenCounter);
+                              },
+                              child: Text("30",style:TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: chosenCounter==31?20:10,
+                                  fontFamily: 'janna',
+                                  color: ColorManger.searchText) ,)),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: chosenCounter==101?ColorManger.primary:ColorManger.secondary
+                              ),
+                              onPressed:(){
+                                setState(() {
+                                  chosenCounter=101;
+                                  sebhaConter=0;
+                                  time=0;
+                                });
+                                PrefHelper.savechossen(chosenCounter);
+                              },
+                              child: Text("100",style:TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: chosenCounter==101?20:10,
+                                  fontFamily: 'janna',
+                                  color: ColorManger.searchText) ,)),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  time = 0;
+                                  sebhaConter = 0;
+                                  chosenCounter=31;
+                                  PrefHelper.saveCounter(sebhaConter);
+                                  PrefHelper.saveTimeZekr(time);
+                                  PrefHelper.savechossen(chosenCounter);
+                                });
+                              },
+                              icon: Icon(
+                                Icons.refresh_outlined,
+                                color: ColorManger.primary,
+                                size: 50,
+                              )),
+                        ],
+                      )
+                    ],
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                    backgroundColor: chosenCounter==11?ColorManger.primary:ColorManger.secondary
-                  ),
-                      onPressed:(){
-                    setState(() {
-                      chosenCounter=11;
-                      sebhaConter=0;
-                      time=0;
-                    });
-                    PrefHelper.savechossen(chosenCounter);
-                  },
-                      child: Text("10",style:TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: chosenCounter==11?20:10,
-                          fontFamily: 'janna',
-                          color: ColorManger.searchText) ,)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                    backgroundColor: chosenCounter==31?ColorManger.primary:ColorManger.secondary
-                  ),
-                      onPressed:(){
-                    setState(() {
-                      chosenCounter=31;
-                      sebhaConter=0;
-                      time=0;
-                    });
-                    PrefHelper.savechossen(chosenCounter);
-                  },
-                      child: Text("30",style:TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: chosenCounter==31?20:10,
-                          fontFamily: 'janna',
-                          color: ColorManger.searchText) ,)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                    backgroundColor: chosenCounter==101?ColorManger.primary:ColorManger.secondary
-                  ),
-                      onPressed:(){
-                    setState(() {
-                      chosenCounter=101;
-                      sebhaConter=0;
-                      time=0;
-                    });
-                    PrefHelper.savechossen(chosenCounter);
-                  },
-                      child: Text("100",style:TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: chosenCounter==101?20:10,
-                          fontFamily: 'janna',
-                          color: ColorManger.searchText) ,)),
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          time = 0;
-                          sebhaConter = 0;
-                          chosenCounter=31;
-                          PrefHelper.saveCounter(sebhaConter);
-                          PrefHelper.saveTimeZekr(time);
-                          PrefHelper.savechossen(chosenCounter);
-                        });
-                      },
-                      icon: Icon(
-                        Icons.refresh_outlined,
-                        color: ColorManger.primary,
-                        size: 50,
-                      )),
-                ],
+                ),
               )
             ],
           ),
