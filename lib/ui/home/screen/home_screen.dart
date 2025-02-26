@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:islami/style/StringsManger.dart';
 import 'package:islami/style/colorsmanger.dart';
@@ -22,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Qurantab(),
     Hadithtab(),
     Sebhatab(),
-    Radiotab(),
-    Timetab()
+    /*Radiotab(),
+    Timetab()*/
   ];
 
   @override
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: NavigationBar(
-          height: 60,
+          height: 80.h,
           onDestinationSelected: (index) {
             setState(() {
               selctedindex = index;
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
                 label: StringsManger.sebha),
-            NavigationDestination(
+            /*NavigationDestination(
                 icon: SvgPicture.asset(
                   AssetsManger.radio,
                   colorFilter:
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   colorFilter:
                   ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
-                label: StringsManger.time),
+                label: StringsManger.time),*/
           ]),
       body: tabs[selctedindex],
     );

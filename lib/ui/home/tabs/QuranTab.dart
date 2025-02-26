@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/Constant.dart';
@@ -39,7 +40,7 @@ class _QurantabState extends State<Qurantab> {
                 fit: BoxFit.fitWidth)),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: REdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,8 +48,12 @@ class _QurantabState extends State<Qurantab> {
                     alignment: Alignment.center,
                     child: Image.asset(
                       AssetsManger.logo,
-                      scale: 1.25,
+                      width: 299.w,
+                      height: 141.h,
                     )),
+                SizedBox(
+                  height: 21.h,
+                ),
                 TextField(
                   onChanged: (value) {
                     setState(() {
@@ -58,7 +63,7 @@ class _QurantabState extends State<Qurantab> {
                   },
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: 'janna',
                       color: ColorManger.searchText),
                   textAlignVertical: TextAlignVertical.center,
@@ -69,17 +74,17 @@ class _QurantabState extends State<Qurantab> {
                     hintText: "Enter Sura Name",
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontFamily: 'janna',
                         color: ColorManger.searchText),
                     prefixIconConstraints:
-                    BoxConstraints(maxWidth: 56, maxHeight: 56),
+                    BoxConstraints(maxWidth: 56.w, maxHeight: 56.h),
                     prefixIcon: Padding(
-                      padding: EdgeInsets.all(14),
+                      padding: REdgeInsets.all(14),
                       child: SvgPicture.asset(AssetsManger.quran),
                     ),
                     enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                         borderSide: BorderSide(
                           color: ColorManger.primary,
                         )),
@@ -94,18 +99,18 @@ class _QurantabState extends State<Qurantab> {
                   if(mostResentList.isNotEmpty)
                     ...[
                       SizedBox(
-                        height: 15,
+                        height: 20.h,
                       ),
                       Text(
                         StringsManger.mostRecently,
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: "janna",
                             color: ColorManger.searchText),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 10.h,
                       ),
                       Expanded(
                         flex: 1,
@@ -115,31 +120,40 @@ class _QurantabState extends State<Qurantab> {
                               recentSura: mostResentList[index],
                             ),
                             separatorBuilder: (context, index) => SizedBox(
-                              width: 10,
+                              width: 10.w,
                             ),
                             itemCount: mostResentList.length),
                       ),
                     ],
                   SizedBox(
-                    height: 10,
+                    height: 20.h,
                   ),
                   Text(StringsManger.surasList,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontFamily: "janna",
                           color: ColorManger.searchText)),
                   SizedBox(
-                    height: 10,
+                    height: 10.h,
                   ),
                 ],
                 if (searchValue.isNotEmpty)
-                  Text("Number of results : ${searchList.length}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 25,
-                          fontFamily: "janna",
-                          color: ColorManger.searchText)),
+                  ...[
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text("Number of results : ${searchList.length}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 25.sp,
+                            fontFamily: "janna",
+                            color: ColorManger.searchText)),
+                    SizedBox(
+                      height: 10.h,
+                    )
+
+                  ],
                 Expanded(
                   flex: 2,
                   child: ListView.separated(
@@ -168,9 +182,9 @@ class _QurantabState extends State<Qurantab> {
                             : SuraList[index],
                       ),
                       separatorBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        padding: REdgeInsets.symmetric(horizontal: 40),
                         child: Divider(
-                          height: 16,
+                          height: 16.h,
                         ),
                       ),
                       itemCount: searchValue.isNotEmpty

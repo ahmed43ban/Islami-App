@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/model/HadithModel.dart';
 import 'package:islami/style/colorsmanger.dart';
 import 'package:islami/ui/home/widgets/Hadithwidget.dart';
@@ -40,10 +41,11 @@ class _HadithtabState extends State<Hadithtab> {
                 alignment: Alignment.center,
                 child: Image.asset(
                   AssetsManger.logo,
-                  scale: 1.25,
+                  width: 289.w,
+                  height: 129.h,
                 )),
             SizedBox(
-              height: 5,
+              height: 55.h,
             ),
             Expanded(
               child: PageView.builder(

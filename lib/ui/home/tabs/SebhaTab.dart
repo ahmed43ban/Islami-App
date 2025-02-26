@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/style/StringsManger.dart';
 import 'package:islami/style/prefsHelper.dart';
 
@@ -40,7 +41,7 @@ class _SebhatabState extends State<Sebhatab> {
               image: AssetImage(AssetsManger.sebhaback), fit: BoxFit.fitWidth)),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: REdgeInsets.symmetric(
             horizontal: 20,
           ),
           child: Column(
@@ -49,10 +50,11 @@ class _SebhatabState extends State<Sebhatab> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     AssetsManger.logo,
-                    scale: 1.25,
+                    width: 291.w,
+                    height: 171.h,
                   )),
               SizedBox(
-                height: 16,
+                height: 16.h,
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -62,12 +64,12 @@ class _SebhatabState extends State<Sebhatab> {
                         StringsManger.mainzekr,
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 30,
+                            fontSize: 30.sp,
                             fontFamily: 'janna',
                             color: ColorManger.searchText),
                       ),
                       SizedBox(
-                        height: 16,
+                        height: 16.sp,
                       ),
                       Stack(
                         alignment: Alignment.topCenter,
@@ -76,7 +78,7 @@ class _SebhatabState extends State<Sebhatab> {
                             AssetsManger.sebhahead,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: height * .09),
+                            padding: REdgeInsets.only(top: height * 0.11),
                             child: GestureDetector(
                               onTap: () {
                                 RotationAngel();
@@ -98,7 +100,7 @@ class _SebhatabState extends State<Sebhatab> {
                                         currentzekr[time],
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 30,
+                                            fontSize: 36.sp,
                                             fontFamily: 'janna',
                                             color: ColorManger.searchText),
                                       ),
@@ -106,7 +108,7 @@ class _SebhatabState extends State<Sebhatab> {
                                         "${sebhaConter}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 30,
+                                            fontSize: 36.sp,
                                             fontFamily: 'janna',
                                             color: ColorManger.searchText),
                                       )
@@ -134,7 +136,7 @@ class _SebhatabState extends State<Sebhatab> {
                               },
                               child: Text("10",style:TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: chosenCounter==11?20:10,
+                                  fontSize: chosenCounter==11?30.sp:20.sp,
                                   fontFamily: 'janna',
                                   color: ColorManger.searchText) ,)),
                           ElevatedButton(
@@ -151,7 +153,7 @@ class _SebhatabState extends State<Sebhatab> {
                               },
                               child: Text("30",style:TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: chosenCounter==31?20:10,
+                                  fontSize: chosenCounter==31?30.sp:20.sp,
                                   fontFamily: 'janna',
                                   color: ColorManger.searchText) ,)),
                           ElevatedButton(
@@ -168,7 +170,7 @@ class _SebhatabState extends State<Sebhatab> {
                               },
                               child: Text("100",style:TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: chosenCounter==101?20:10,
+                                  fontSize: chosenCounter==101?30.sp:20.sp,
                                   fontFamily: 'janna',
                                   color: ColorManger.searchText) ,)),
                           IconButton(
@@ -185,7 +187,7 @@ class _SebhatabState extends State<Sebhatab> {
                               icon: Icon(
                                 Icons.refresh_outlined,
                                 color: ColorManger.primary,
-                                size: 50,
+                                size: 60.sp,
                               )),
                         ],
                       )
@@ -216,7 +218,6 @@ class _SebhatabState extends State<Sebhatab> {
   void RotationAngel() {
     setState(() {
       rotation == 360 ? rotation = 0 : rotation += 180;
-      print(rotation);
     });
   }
 }
