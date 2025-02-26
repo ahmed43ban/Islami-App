@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/assetsmanger.dart';
@@ -24,21 +25,21 @@ class Surawidget extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 AssetsManger.suranumber,
-                height: 52,
-                width: 52,
+                height: 52.h,
+                width: 52.w,
               ),
               Text(
                 sura.suraNumber.toString(),
                 style: TextStyle(
                     fontFamily: "janna",
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
                     color: Colors.white),
               )
             ],
           ),
           SizedBox(
-            width: 24,
+            width: 24.w,
           ),
           Expanded(
             child: Column(
@@ -48,14 +49,14 @@ class Surawidget extends StatelessWidget {
                   sura.suraNameEn,
                   style: TextStyle(
                       fontFamily: "janna",
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
                 Text("${sura.versesNumber} verses",
                     style: TextStyle(
                         fontFamily: "janna",
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white))
               ],
@@ -65,7 +66,7 @@ class Surawidget extends StatelessWidget {
             sura.suraNameAr,
             style: TextStyle(
                 fontFamily: "janna",
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w700,
                 color: Colors.white),
           ),

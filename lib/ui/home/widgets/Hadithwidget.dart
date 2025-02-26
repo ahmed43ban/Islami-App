@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/model/HadithModel.dart';
 import 'package:islami/style/colorsmanger.dart';
 
@@ -12,11 +13,11 @@ class HadithWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
-      margin: EdgeInsets.all(10),
+      padding: REdgeInsets.all(5),
+      margin: REdgeInsets.all(10),
       decoration: BoxDecoration(
         color: ColorManger.primary,
-          borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(20.r)
       ),
       child: Column(
         children: [
@@ -28,7 +29,7 @@ class HadithWidget extends StatelessWidget {
                     haditmodel.title,style: TextStyle(
                         color: ColorManger.secondary,
                         fontFamily: "janna",
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontWeight: FontWeight.w700
                     )),
               ),
@@ -38,7 +39,7 @@ class HadithWidget extends StatelessWidget {
           Expanded(
             child: Stack(alignment: Alignment.center,
               children: [
-                Image.asset(AssetsManger.Hadithtxtback,scale: 1.25,),
+                Image.asset(AssetsManger.Hadithtxtback,width: 265.w,height: 411.27.h,),
                 InkWell(onTap: (){
                   Navigator.pushNamed(context, HadithDetailsScreen.routName,arguments: haditmodel);
                 },
@@ -49,7 +50,7 @@ class HadithWidget extends StatelessWidget {
                     haditmodel.content,style: TextStyle(
                       fontFamily: "janna",
                       fontWeight:FontWeight.w700 ,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: ColorManger.secondary,
                     ),
                   ),

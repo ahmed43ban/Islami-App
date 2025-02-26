@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
@@ -16,13 +17,13 @@ class Resntlysurawidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           color: ColorManger.primary,
         ),
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 17),
+              padding: REdgeInsets.only(left: 17),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -31,7 +32,7 @@ class Resntlysurawidget extends StatelessWidget {
                     recentSura.suraNameEn,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontFamily: "janna",
                         color: ColorManger.secondary),
                   ),
@@ -39,7 +40,7 @@ class Resntlysurawidget extends StatelessWidget {
                     recentSura.suraNameAr,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontFamily: "janna",
                         color: ColorManger.secondary),
                   ),
@@ -47,7 +48,7 @@ class Resntlysurawidget extends StatelessWidget {
                     "${recentSura.versesNumber} Verses",
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontFamily: "janna",
                         color: ColorManger.secondary),
                   ),
@@ -55,8 +56,8 @@ class Resntlysurawidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 7),
-              child: Image.asset(AssetsManger.qurancard),
+              padding: REdgeInsets.symmetric(vertical: 7),
+              child: Image.asset(AssetsManger.qurancard,width: 151.w,height: 136.h,),
             )
           ],
         ),
