@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
+
+import '../../../style/prefsHelper.dart';
+import '../widgets/show_modal_bottom.dart';
 
 class SuradetailsScreen extends StatefulWidget {
   static const String routName = "Suradetails";
@@ -32,7 +36,7 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
         title: Text(sura.suraNameEn,style: TextStyle(
           color: ColorManger.primary,
           fontFamily: "janna",
-            fontSize: 24,
+            fontSize: 24.sp,
           fontWeight: FontWeight.w700
         ),),
       ),
@@ -40,7 +44,7 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              padding: REdgeInsets.symmetric(horizontal: 18),
               child: Column(
                 children: [
                   Row(
@@ -51,14 +55,14 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
                             sura.suraNameAr,style: TextStyle(
                                 color: ColorManger.primary,
                                 fontFamily: "janna",
-                                fontSize: 24,
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.w700
                             )),
                       ),
                       Image.asset(AssetsManger.rightcorner),
                     ],
                   ),
-                  SizedBox(height: 19,),
+                  SizedBox(height: 10.h,),
                   Expanded(
                     child: suraText.isEmpty
                         ?Center(child: CircularProgressIndicator(
@@ -70,7 +74,7 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
                         suraText,style: TextStyle(
                           fontFamily: "janna",
                           fontWeight:FontWeight.w700 ,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           color: ColorManger.primary,
                         ),
                       ),
@@ -80,7 +84,15 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
               ),
             ),
           ),
-          Image.asset(AssetsManger.mosque,width: double.infinity)
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset(AssetsManger.mosque,width: double.infinity),
+              ElevatedButton(onPressed: (){
+                showModalBottoms(PrefHelper.getStopName(),PrefHelper.getStop(),sura);
+              }, child: Icon(Icons.stop_circle,color: ColorManger.dotSecondary,size: 50.sp,))
+            ],
+          )
         ],
       ),
     );
@@ -98,4 +110,10 @@ class _SuradetailsScreenState extends State<SuradetailsScreen> {
     setState(() {
     });
   }
+  void showModalBottoms(String name,String num ,SuraModel sura) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => ShowModalBottom(nameAr: name,numAya: num,suraModel: sura,));
+
+        }
 }

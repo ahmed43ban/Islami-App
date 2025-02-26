@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
 import 'package:islami/style/prefsHelper.dart';
@@ -33,8 +34,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: ColorManger.secondary,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
+        child: RPadding(
+          padding: REdgeInsets.all(8.0),
           child: Column(
             children: [
               Align(
@@ -52,8 +53,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5),
+              RPadding(
+                padding: REdgeInsets.only(bottom: 5),
                 child: Row(
                   children: [
                     GestureDetector(
@@ -66,25 +67,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       },
                       child: Container(
                         color: Colors.transparent,
-                        margin: EdgeInsets.all(5),
+                        margin: REdgeInsets.all(5),
                         child: index>0?Text("Back",style: TextStyle(
                             color: ColorManger.primary,
                             fontFamily: "janna",
-                            fontSize: 16,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w700
                         ),)
-                            :SizedBox(width: 30,),
+                            :SizedBox(width: 30.w,),
                       )
                     ),
                     Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(5, (index){
-                        return  AnimatedContainer(duration: Duration(milliseconds: 20),
-                          height: 5,
-                          width: curnnetphoto==index?18:7,
-                          decoration: BoxDecoration(
-                              color: curnnetphoto==index?ColorManger.dotPrimary:ColorManger.dotSecondary,
-                              borderRadius: BorderRadius.circular(5)
-                          ),);
+                        return  Column(
+                          children: [
+                            AnimatedContainer(duration: Duration(milliseconds: 300),
+                              height: 8.h,
+                              width: curnnetphoto==index?25.w:10.w,
+                              decoration: BoxDecoration(
+                                  color: curnnetphoto==index?ColorManger.dotPrimary:ColorManger.dotSecondary,
+                                  borderRadius: BorderRadius.circular(5.r)
+                              ),),
+                            if (index < 4) SizedBox(width: 20.w),
+                          ],
+                        );
                       }),
                     ),),
                     GestureDetector(
@@ -98,16 +104,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       },
                       child: Container(
                         color: Colors.transparent,
-                        margin: EdgeInsets.all(5),
+                        margin: REdgeInsets.all(5),
                         child: index <4 ?Text("Next",style: TextStyle(
                             color: ColorManger.primary,
                             fontFamily: "janna",
-                            fontSize: 16,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w700
                         ),):Text("Finish",style: TextStyle(
                             color: ColorManger.primary,
                             fontFamily: "janna",
-                            fontSize: 16,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w700
                         ),),
                       )

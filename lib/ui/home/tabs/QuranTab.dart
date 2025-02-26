@@ -51,6 +51,9 @@ class _QurantabState extends State<Qurantab> {
                       width: 299.w,
                       height: 141.h,
                     )),
+                SizedBox(
+                  height: 21.h,
+                ),
                 TextField(
                   onChanged: (value) {
                     setState(() {
@@ -96,7 +99,7 @@ class _QurantabState extends State<Qurantab> {
                   if(mostResentList.isNotEmpty)
                     ...[
                       SizedBox(
-                        height: 15.h,
+                        height: 20.h,
                       ),
                       Text(
                         StringsManger.mostRecently,
@@ -123,7 +126,7 @@ class _QurantabState extends State<Qurantab> {
                       ),
                     ],
                   SizedBox(
-                    height: 10.h,
+                    height: 20.h,
                   ),
                   Text(StringsManger.surasList,
                       style: TextStyle(
@@ -136,12 +139,21 @@ class _QurantabState extends State<Qurantab> {
                   ),
                 ],
                 if (searchValue.isNotEmpty)
-                  Text("Number of results : ${searchList.length}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 25.sp,
-                          fontFamily: "janna",
-                          color: ColorManger.searchText)),
+                  ...[
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text("Number of results : ${searchList.length}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 25.sp,
+                            fontFamily: "janna",
+                            color: ColorManger.searchText)),
+                    SizedBox(
+                      height: 10.h,
+                    )
+
+                  ],
                 Expanded(
                   flex: 2,
                   child: ListView.separated(

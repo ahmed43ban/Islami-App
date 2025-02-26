@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/model/HadithModel.dart';
 import 'package:islami/model/SuraModel.dart';
 import 'package:islami/style/assetsmanger.dart';
@@ -29,7 +30,7 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
           style: TextStyle(
               color: ColorManger.primary,
               fontFamily: "janna",
-              fontSize: 24,
+              fontSize: 24.sp,
               fontWeight: FontWeight.w700),
         ),
       ),
@@ -37,7 +38,7 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              padding: REdgeInsets.symmetric(horizontal: 18),
               child: Column(
                 children: [
                   Row(
@@ -50,14 +51,14 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
                             style: TextStyle(
                                 color: ColorManger.primary,
                                 fontFamily: "janna",
-                                fontSize: 24,
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.w700)),
                       ),
                       Image.asset(AssetsManger.rightcorner),
                     ],
                   ),
                   SizedBox(
-                    height: 19,
+                    height: 10.h,
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -68,7 +69,7 @@ class _SuradetailsScreenState extends State<HadithDetailsScreen> {
                         style: TextStyle(
                           fontFamily: "janna",
                           fontWeight: FontWeight.w700,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           color: ColorManger.primary,
                         ),
                       ),

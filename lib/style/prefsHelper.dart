@@ -58,4 +58,16 @@ class PrefHelper {
   static getBool(){
     return prefs.get("done")??false;
   }
+  static addStop(String num){
+    prefs.setString("aya", num);
+  }
+  static getStop(){
+    return prefs.getString("aya")??'';
+  }
+  static addStopName(String num){
+    prefs.setString("sura", num);
+  }
+  static getStopName(){
+    return prefs.getString("sura")??'';
+  }
 }
