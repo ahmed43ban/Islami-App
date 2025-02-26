@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:islami/style/StringsManger.dart';
 import 'package:islami/style/colorsmanger.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: NavigationBar(
-          height: 60,
+          height: 80.h,
           onDestinationSelected: (index) {
             setState(() {
               selctedindex = index;

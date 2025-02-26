@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/style/prefsHelper.dart';
 import 'package:islami/ui/onboarding/screen/onboarding_screen.dart';
 
@@ -32,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Image.asset(
+        height: 932.h,
         AssetsManger.splash,
         width: double.infinity,
         fit: BoxFit.fill,
