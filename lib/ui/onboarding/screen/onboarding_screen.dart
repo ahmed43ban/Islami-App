@@ -98,6 +98,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         setState(() {
                           index<4 ? index= index+1
                               :Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                          if(index==4)
+                          PrefHelper.saveBool(true);
                           curnnetphoto = index;
 
                         });

@@ -64,7 +64,7 @@ class _ShowModalBottomState extends State<ShowModalBottom> {
                       style: TextStyle(
                           fontFamily: "janna",
                           fontWeight: FontWeight.bold,
-                          fontSize: 27),
+                          fontSize: 27.sp),
                     ),
                   ),
                   Image.asset(
