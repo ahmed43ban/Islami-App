@@ -5,6 +5,7 @@ abstract final class AssetsManger{
   static const String leftcorner = "assets/images/left_corner.png";
   static const String logo = "assets/images/Logo.png";
   static const String mosque = "assets/images/mosque.png";
+  static const String mosque2 = "assets/images/mosque2.png";
   static const String quran = "assets/images/quran.svg";
   static const String quranback = "assets/images/quran_Background.png";
   static const String qurancard = "assets/images/quran_card.png";
@@ -23,5 +24,6 @@ abstract final class AssetsManger{
   static const String intro3 = "assets/images/intro3.png";
   static const String intro4 = "assets/images/intro4.png";
   static const String intro5 = "assets/images/intro5.png";
+  static const String soundWave = "assets/images/soundWave.png";
   static const String Hadithtxtback = "assets/images/Hadithtxtback.png";
 }
