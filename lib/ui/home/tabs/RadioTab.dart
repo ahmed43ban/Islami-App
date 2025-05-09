@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/api/api_manager.dart';
+import 'package:islami/model/Radio_respose_model.dart';
+import 'package:islami/model/Radios.dart';
 
 import '../../../style/assetsmanger.dart';
 import '../../../style/colorsmanger.dart';
 import '../widgets/Radio_widget.dart';
 
-class Radiotab extends StatelessWidget {
+class Radiotab extends StatefulWidget {
   const Radiotab({super.key});
 
+  @override
+  State<Radiotab> createState() => _RadiotabState();
+}
+
+class _RadiotabState extends State<Radiotab> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +54,7 @@ class Radiotab extends StatelessWidget {
                           fontFamily: "janna",
                         color: ColorManger.teritary
                           ) ,
-                    
+
                         labelStyle: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16.sp,
@@ -66,12 +74,41 @@ class Radiotab extends StatelessWidget {
                   ),
                   Expanded(
                     child: TabBarView(children: [
+                               FutureBuilder<RadioResposeModel>(future: ApiManager.getRadioData(),
+                                   builder: (context, snapshot) {
+                                     if(snapshot.connectionState==ConnectionState.waiting){
+                                       return Center(child: CircularProgressIndicator(color: ColorManger.primary,));
+                                     }else if(snapshot.hasError){
+                                       return Column(
+                                         children: [
+                                           Text("Some thing went wrong",style: TextStyle(
+                                               color: ColorManger.teritary,
+                                               fontFamily: "janna",
+                                               fontSize: 20.sp,
+                                               fontWeight: FontWeight.w700
+                                           ),),
+                                           SizedBox(height: 20.h,),
+                                           ElevatedButton(onPressed: () {
+                                             setState(() {
+
+                                             });
+                                           }, child: Text("Try again",style: TextStyle(
+                                               color: ColorManger.primary,
+                                               fontFamily: "janna",
+                                               fontSize: 20.sp,
+                                               fontWeight: FontWeight.w700
+                                           )))
+                                         ],
+                                       );
+                                     }
+                                     RadioResposeModel data =snapshot.data!;
+                                     return ListView.separated(
+                                         itemBuilder: (context, index) => RadioWidget(radios:data.radios![index]),
+                                         separatorBuilder: (context, index) => SizedBox(height: 8.h,),
+                                         itemCount: data.radios!.length);
+                                   },),
                                ListView.separated(
-                                   itemBuilder: (context, index) => RadioWidget(),
-                                   separatorBuilder: (context, index) => SizedBox(height: 8.h,),
-                                   itemCount: 20),
-                               ListView.separated(
-                                   itemBuilder: (context, index) => RadioWidget(),
+                                   itemBuilder: (context, index) => Container(),
                                    separatorBuilder: (context, index) => SizedBox(height: 8.h,),
                                    itemCount: 20),
                     ]),

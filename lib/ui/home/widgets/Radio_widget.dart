@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/style/assetsmanger.dart';
 import 'package:islami/style/colorsmanger.dart';
 
-class RadioWidget extends StatefulWidget {
+import '../../../model/Radios.dart';
 
-  RadioWidget({super.key});
+class RadioWidget extends StatefulWidget {
+  Radios radios;
+
+  RadioWidget({super.key,required this.radios});
 
   @override
   State<RadioWidget> createState() => _RadioWidgetState();
@@ -30,7 +33,7 @@ class _RadioWidgetState extends State<RadioWidget> {
         children: [
           Padding(
             padding:  REdgeInsets.symmetric(vertical: 8.0),
-            child: Text("Radio Ibrahim Al-Akdar",style: TextStyle(fontWeight: FontWeight.w700,
+            child: Text(widget.radios.name!,style: TextStyle(fontWeight: FontWeight.w700,
                 fontSize: 20.sp,
                 fontFamily: "janna",
                 color: ColorManger.secondary),),
