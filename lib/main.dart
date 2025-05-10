@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/provider/radio_manger_provider.dart';
 import 'package:islami/style/colorsmanger.dart';
 import 'package:islami/style/prefsHelper.dart';
 import 'package:islami/ui/hadith_details/screen/hadith_details_screen.dart';
@@ -8,13 +9,16 @@ import 'package:islami/ui/home/screen/home_screen.dart';
 import 'package:islami/ui/onboarding/screen/onboarding_screen.dart';
 import 'package:islami/ui/splash/screen/splash_screen.dart';
 import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   await PrefHelper.init();
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => RadioMangerProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

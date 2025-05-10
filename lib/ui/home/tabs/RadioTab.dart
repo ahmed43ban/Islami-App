@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/api/api_manager.dart';
 import 'package:islami/model/Radio_respose_model.dart';
 import 'package:islami/model/Radios.dart';
+import 'package:islami/model/Reciters_respose_model.dart';
 
 import '../../../style/assetsmanger.dart';
 import '../../../style/colorsmanger.dart';
@@ -103,14 +104,45 @@ class _RadiotabState extends State<Radiotab> {
                                      }
                                      RadioResposeModel data =snapshot.data!;
                                      return ListView.separated(
-                                         itemBuilder: (context, index) => RadioWidget(radios:data.radios![index]),
+                                         itemBuilder: (context, index) => RadioWidget(name:data.radios![index].name??"",url:data.radios![index].url??"" ,),
                                          separatorBuilder: (context, index) => SizedBox(height: 8.h,),
                                          itemCount: data.radios!.length);
                                    },),
-                               ListView.separated(
-                                   itemBuilder: (context, index) => Container(),
-                                   separatorBuilder: (context, index) => SizedBox(height: 8.h,),
-                                   itemCount: 20),
+                               FutureBuilder<RecitersResposeModel>(
+                                   future: ApiManager.getRecitersData(),
+                                   builder:(context, snapshot) {
+                                     if(snapshot.connectionState==ConnectionState.waiting){
+                                       return Center(child: CircularProgressIndicator(color: ColorManger.primary,));
+                                     }else if(snapshot.hasError){
+                                       return Column(
+                                         children: [
+                                           Text("Some thing went wrong",style: TextStyle(
+                                               color: ColorManger.teritary,
+                                               fontFamily: "janna",
+                                               fontSize: 20.sp,
+                                               fontWeight: FontWeight.w700
+                                           ),),
+                                           SizedBox(height: 20.h,),
+                                           ElevatedButton(onPressed: () {
+                                             setState(() {
+
+                                             });
+                                           }, child: Text("Try again",style: TextStyle(
+                                               color: ColorManger.primary,
+                                               fontFamily: "janna",
+                                               fontSize: 20.sp,
+                                               fontWeight: FontWeight.w700
+                                           )))
+                                         ],
+                                       );
+                                     }
+                                     RecitersResposeModel data =snapshot.data!;
+                                     return ListView.separated(
+                                         itemBuilder: (context, index) => RadioWidget(name:data.reciters![index].name??"",url:"${data.reciters![index].moshaf![0].server}12.mp3" ,),
+                                         separatorBuilder: (context, index) => SizedBox(height: 8.h,),
+                                         itemCount: data.reciters!.length);
+                                   },)
+
                     ]),
                   )
                 ],
