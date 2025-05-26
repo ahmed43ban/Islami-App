@@ -281,7 +281,7 @@ class _RadioWidgetState extends State<RadioWidget> {
                                 );
                               },
                               icon: Icon(
-                                Icons.search,
+                                Icons.queue_music,
                                 size: 45.sp,
                                 color: ColorManger.secondary,
                               ),
