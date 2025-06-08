@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/style/StringsManger.dart';
 import 'package:islami/style/prefsHelper.dart';
+import 'package:islami/ui/azkar/screen/azkar_screen.dart';
 
 import '../../../style/assetsmanger.dart';
 import '../../../style/colorsmanger.dart';
@@ -50,9 +51,20 @@ class _SebhatabState extends State<Sebhatab> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     AssetsManger.logo,
-                    width: 291.w,
-                    height: 171.h,
+                    width: 289.w,
+                    height: 129.h,
                   )),
+              InkWell(onTap: (){
+                Navigator.pushNamed(context, AzkarScreen.routeName);
+              },
+                  child: Text("أذكار الصباح و المساء",style: TextStyle(
+                    decorationThickness: 3,
+                    decorationColor: ColorManger.dotPrimary,
+                    decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 30.sp,
+                      fontFamily: 'janna',
+                      color: ColorManger.primary),)),
               SizedBox(
                 height: 16.h,
               ),

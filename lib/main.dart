@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/provider/radio_manger_provider.dart';
 import 'package:islami/style/colorsmanger.dart';
 import 'package:islami/style/prefsHelper.dart';
+import 'package:islami/ui/azkar/screen/azkar_screen.dart';
 import 'package:islami/ui/hadith_details/screen/hadith_details_screen.dart';
 import 'package:islami/ui/home/screen/home_screen.dart';
 import 'package:islami/ui/onboarding/screen/onboarding_screen.dart';
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
             OnboardingScreen.routeName:(_)=>OnboardingScreen(),
             SuradetailsScreen.routName:(_)=>SuradetailsScreen(),
             HadithDetailsScreen.routName:(_)=>HadithDetailsScreen(),
+            AzkarScreen.routeName:(_)=>AzkarScreen(),
           },
           initialRoute: SplashScreen.routeName,
         );
