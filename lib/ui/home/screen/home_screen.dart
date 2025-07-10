@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Hadithtab(),
     Sebhatab(),
     Radiotab(),
-    Timetab()
+    //Timetab()
   ];
 
   @override
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
                 label: StringsManger.radio),
-            NavigationDestination(
+            /*NavigationDestination(
                 icon: SvgPicture.asset(
                   AssetsManger.time,
                   colorFilter:
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   colorFilter:
                   ColorFilter.mode(ColorManger.teritary, BlendMode.srcIn),
                 ),
-                label: StringsManger.time),
+                label: StringsManger.time),*/
           ]),
       body: tabs[selctedindex],
     );
