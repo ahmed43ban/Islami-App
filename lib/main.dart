@@ -12,10 +12,13 @@ import 'package:islami/ui/splash/screen/splash_screen.dart';
 import 'package:islami/ui/sura_details/screen/suradetails_screen.dart';
 import 'package:provider/provider.dart';
 
+//late RadioAudioHandler audioHandler;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //audioHandler = await initAudioService() as RadioAudioHandler;
   await ScreenUtil.ensureScreenSize();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   await PrefHelper.init();
   runApp(ChangeNotifierProvider(
     create: (context) => RadioMangerProvider(),
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: '',
           theme: ThemeData(
             // This is the theme of your application.
             //

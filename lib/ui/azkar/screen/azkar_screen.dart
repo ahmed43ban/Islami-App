@@ -26,16 +26,20 @@ class _AzkarScreenState extends State<AzkarScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(
-              AssetsManger.ahasethback,
-            ),
-            fit: BoxFit.fitWidth),
-      ),
-      child: SafeArea(
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Color(0xff121212).withOpacity(0.55),
+      statusBarIconBrightness: Brightness.light,
+    ));
+    return  SafeArea(
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                AssetsManger.ahasethback,
+              ),
+              fit: BoxFit.fitWidth),
+        ),
         child: Scaffold(
           backgroundColor:  Colors.transparent,
           appBar: AppBar(
